@@ -80,7 +80,7 @@ function QuizContainer () {
             <div style={{height: '60px'}}> 
                 <Stack flexDirection="row" justifyContent={'center'}>
                     <h1 style={{margin: '8px'}}>
-                        Jeopardy with Friends
+                        Quizboard with Friends
                     </h1>
                     <IconButton aria-label="add" onClick={() => {setCreateNewQuiz(true)}}>
                             <AddIcon/>
