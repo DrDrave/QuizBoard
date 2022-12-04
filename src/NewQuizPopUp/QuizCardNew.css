@@ -1,5 +1,6 @@
 .QuizCardNew{
     max-height: 200px;
+    min-height: 150px;
     width: 200px;
     height: 100%;
     flex-grow: 1;

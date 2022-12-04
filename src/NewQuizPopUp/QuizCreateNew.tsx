@@ -157,9 +157,9 @@ function QuizCreateNew (props: QuizCreateNewProps) {
         <Grow in={props.createNewQuiz}>
             <div style={{position: 'absolute', top: '60px', height: 'calc(100% - 80px)', width: 'calc(100% - 30px)', left: '15px', zIndex: 2}}>
                 <Paper style={{height: '100%', width: '100%'}} elevation={8}>
-                    <Stack style={{height: '100%'}} gap={'5px'}>
-                        <div>Create new Quiz</div>
-                        <Stack style={{height: '95%', width: '97%'}} alignSelf={'center'}>
+                    <Stack style={{height: '100%'}} gap={'5px'} justifyContent={'space-around'}>
+                        <div style={{height: '3%'}}>Create new Quiz</div>
+                        <Stack style={{height: '91%', width: '97%'}} alignSelf={'center'}>
                             <Stack flexDirection={'row'} className={'newQuizBoard'} gap={'10px'}>
                                 {newQuiz.map((quizColumn, index) => (
                                     <QuizColumnNew key={index} 
@@ -170,7 +170,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
                                 ))}
                             </Stack>
                         </Stack>
-                        <Stack flexDirection={'row'} justifyContent={'center'} marginBottom={'5px'} gap={'5px'}>
+                        <Stack flexDirection={'row'} justifyContent={'center'} marginBottom={'5px'} gap={'5px'} height={'4%'}>
                             <Stack flexDirection={'row'} gap={'5px'} alignItems={'center'}>
                                 <Stack flexDirection={'row'} gap={'5px'} alignItems={'center'}>
                                     Columns
