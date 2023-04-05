@@ -78,8 +78,6 @@ function QuizActiveCard (props: QuizActiveCardProps) {
         return null
     }
 
-    console.log(props.question)
-
     return(
         <Stack className={'QuizActiveCard'}>
             {showAnswer ? 
