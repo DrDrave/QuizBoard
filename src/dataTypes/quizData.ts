@@ -7,7 +7,9 @@ export interface IQuizColumn{
 export interface IQuestion{
     id: number;
     questionType: QuestionType;
-    question: string | string[] | null;
+    questionText: string | null, 
+    questionImage: string | null,
+    questionTextFlow: string[] | null;
     answer: string;
     finished: boolean;
     points: number;

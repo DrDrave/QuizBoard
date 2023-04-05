@@ -1,11 +1,11 @@
 import { Paper, Stack, TextField } from "@mui/material"
-import { IQuizColumn } from "../dataTypes/quizData"
+import { IQuizColumn, QuestionType } from "../dataTypes/quizData"
 import QuizCardNew from "./QuizCardNew"
 import './QuizCardNew.css'
 interface QuizColumnNewProps{
     quizColumn: IQuizColumn
     changePoints: (questionRow: number, increase: boolean) => void;
-    changeQuestion: (questionIndex: number,newQuestion: string, newAnswer: string, changeAnswer: boolean) => void;
+    changeQuestion: (questionIndex: number, newAnswer: string, changeAnswer: boolean, newQuestionType: QuestionType | null , newQuestionTextFlow?: string[], newQuestionImage?: string ,newQuestionText?: string) => void;
     changeCategory: (newCategory: string) => void;
     lastColumn: boolean;
 }
@@ -25,7 +25,7 @@ function QuizColumnNew (props: QuizColumnNewProps) {
             {props.quizColumn.questions.map((question, index) => (
                 <QuizCardNew 
                     key={index}
-                    changeQuestion={(newQuestion: string, newAnswer: string, changeAnswer: boolean) => {props.changeQuestion(index,newQuestion,newAnswer,changeAnswer)}}
+                    changeQuestion={(newAnswer: string, changeAnswer: boolean, newQuestionType: QuestionType | null , newQuestionTextFlow?: string[], newQuestionImage?: string ,newQuestionText?: string) => {props.changeQuestion(index,newAnswer,changeAnswer,newQuestionType, newQuestionTextFlow, newQuestionImage,newQuestionText)}}
                     question={{...question}} 
                     changePoints={(increase: boolean) => {props.changePoints(index,increase)}}/>
             ))}

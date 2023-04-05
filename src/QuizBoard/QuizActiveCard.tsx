@@ -1,7 +1,10 @@
 import { Button, LinearProgress, Stack } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { IQuestion, ITeam } from "../dataTypes/quizData";
+import { IQuestion, ITeam, QuestionType } from "../dataTypes/quizData";
 import './QuizActiveCard.css'
+import QuizCardImageContent from "./QuizCardImageContent";
+import QuizCardTextContent from "./QuizCardTextContent";
+import QuizCardTextFlowContent from "./QuizCardTextFlowContent";
 
 interface QuizActiveCardProps{
     question: IQuestion;
@@ -64,17 +67,25 @@ function QuizActiveCard (props: QuizActiveCardProps) {
         }
     },[ms])
   
+    const renderQuestion = (question: IQuestion, showAnswer: boolean) =>{
+        if(question.questionType === QuestionType.text){
+            return <QuizCardTextContent question={props.question} showAnswer={showAnswer}/>
+        }else if(question.questionType === QuestionType.textFlow){
+            return <QuizCardTextFlowContent question={props.question} showAnswer={showAnswer}/>
+        }else if(question.questionType === QuestionType.image){
+            return <QuizCardImageContent question={props.question} showAnswer={showAnswer}/>
+        }
+        return null
+    }
+
+    console.log(props.question)
+
     return(
         <Stack className={'QuizActiveCard'}>
             {showAnswer ? 
                 <>
                     <Stack justifyContent={'center'} className={'QuizActiveCardContentWrapper'} alignItems={'center'}>
-                        <h1>
-                            {props.question.question? null : null}
-                        </h1>
-                        <h1>
-                            {props.question.answer}
-                        </h1>
+                        {renderQuestion(props.question,true)}
                     </Stack>
                     <Stack flexDirection={'row'} className={'QuizActiveCardButtonWrapper'} alignItems={'center'} gap={'10px'}>
                         <h2>
@@ -88,10 +99,8 @@ function QuizActiveCard (props: QuizActiveCardProps) {
                 </>
             :
                 <>
-                    <Stack justifyContent={'center'} className={'QuizActiveCardContentWrapper'}>
-                        <h1>
-                            {props.question.question? null : null}
-                        </h1>
+                    <Stack justifyContent={'center'} className={'QuizActiveCardContentWrapper'} alignItems={'center'}>
+                        {renderQuestion(props.question,false)}
                     </Stack>
                     <Stack className={'QuizActiveCardButtonWrapper'} gap={'3px'}>
                         <Button variant="contained" onMouseDown={pressingDown} onMouseUp={notPressingDown}>Show Answer</Button>
