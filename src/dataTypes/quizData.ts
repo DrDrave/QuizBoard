@@ -6,11 +6,20 @@ export interface IQuizColumn{
 
 export interface IQuestion{
     id: number;
-    question: string;
+    questionType: QuestionType;
+    question: string | string[] | null;
     answer: string;
     finished: boolean;
     points: number;
 }
+
+export enum QuestionType{
+    text = 'text',
+    textFlow = 'textFlow',
+    //images will mostlikly also be saved as base64 strings
+    image = 'image',
+}
+
 
 export interface ITeam{
     id: number;

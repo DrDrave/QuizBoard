@@ -70,7 +70,7 @@ function QuizActiveCard (props: QuizActiveCardProps) {
                 <>
                     <Stack justifyContent={'center'} className={'QuizActiveCardContentWrapper'} alignItems={'center'}>
                         <h1>
-                            {props.question.question}
+                            {props.question.question? null : null}
                         </h1>
                         <h1>
                             {props.question.answer}
@@ -90,7 +90,7 @@ function QuizActiveCard (props: QuizActiveCardProps) {
                 <>
                     <Stack justifyContent={'center'} className={'QuizActiveCardContentWrapper'}>
                         <h1>
-                            {props.question.question}
+                            {props.question.question? null : null}
                         </h1>
                     </Stack>
                     <Stack className={'QuizActiveCardButtonWrapper'} gap={'3px'}>

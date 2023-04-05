@@ -16,7 +16,8 @@ function QuizCardNew (props: QuizCardNewProps) {
         <Paper elevation={8} className={'QuizCardNew'}>
             <Stack gap={'10px'} style={{height: '100%', width: '80%', marginLeft: 'auto', marginRight: 'auto'}} justifyContent={'center'}>
                 <TextField 
-                        error={props.question.question === ''}
+                        //skip validation for now. as always :D 
+                        //error={props.question.question === ''}
                         onChange={(e) => {props.changeQuestion(e.target.value,'',false)}}
                         value={props.question.question} label="Question" 
                         variant="outlined" size={'small'}/>

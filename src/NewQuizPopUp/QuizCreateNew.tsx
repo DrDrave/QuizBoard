@@ -1,6 +1,6 @@
 import { Button, Grow, IconButton, Paper, Stack } from "@mui/material";
 import { ChangeEvent, useRef, useState } from "react";
-import { IQuestion, IQuizColumn } from "../dataTypes/quizData";
+import { IQuestion, IQuizColumn, QuestionType } from "../dataTypes/quizData";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import QuizColumnNew from "./QuizColumnNew";
@@ -18,7 +18,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
     /**
      * The id for the first question in each row is the last one plus 100. Each now row get just added one to the id of the last row from that colum
      */
-    const [newQuiz,setNewQuiz] = useState<IQuizColumn[]>([{columName: '',questions: [{id: 0,question: '',answer: '',finished: false,points: 100}]}]);
+    const [newQuiz,setNewQuiz] = useState<IQuizColumn[]>([{columName: '',questions: [{id: 0,questionType: QuestionType.text , question: null,answer: '',finished: false,points: 100}]}]);
 
     const exportData = () => {
         const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
@@ -60,7 +60,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
         const questions: IQuestion[] = []
         const newBaseId = newQuiz[newQuiz.length - 1].questions[0].id + 100
         for(let i=0; i<numberOfQuestions; i++){
-            questions.push({id: newBaseId + i,question: '',answer: '',finished: false,points: newQuiz[0].questions[i].points})
+            questions.push({id: newBaseId + i,questionType: QuestionType.text , question: null, answer: '',finished: false,points: newQuiz[0].questions[i].points})
         }
         const newColumn: IQuizColumn = {columName: '', questions: questions}
         setNewQuiz(prevState => {
@@ -105,7 +105,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
             const tmpPrevState = [...prevState]
             tmpPrevState.forEach((questionColumn: IQuizColumn,index) => {
                 const highestColumnId = questionColumn.questions[numberOfQuestions].id
-                questionColumn.questions.push({id: highestColumnId + 1,question: '',answer: '',finished: false,points: pointsLastRow + 100})
+                questionColumn.questions.push({id: highestColumnId + 1,questionType: QuestionType.text , question: null,answer: '',finished: false,points: pointsLastRow + 100})
             })
             return tmpPrevState
         })
@@ -130,7 +130,8 @@ function QuizCreateNew (props: QuizCreateNewProps) {
                 if(changeAnswer){
                     tmpPrevState[columnIndex].questions[questionIndex].answer = newAnswer 
                 }else{
-                    tmpPrevState[columnIndex].questions[questionIndex].question = newQuestion 
+                    //Question needs to be added/changed
+                    tmpPrevState[columnIndex].questions[questionIndex].question = null // newQuestion 
                 }
             }
             return tmpPrevState
