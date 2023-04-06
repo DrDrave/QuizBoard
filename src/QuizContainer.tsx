@@ -9,14 +9,22 @@ import AddIcon from '@mui/icons-material/Add';
 import QuizCreateNew from './NewQuizPopUp/QuizCreateNew';
 
 /**
- * TODO 
+ 
  * 
- * GitHub Page draus machen
- * NewQuizBoard scrollbar
+ * Important to ToDO
+ * Optik überarbeiten und testen (erstmal beim eigentlich quiz und dann beim neuen Quizboard)
+ * Bild müssen irgendwie unkenntlich gemacht werden
+ * Beispiel für Kategorie hinzufügen
+ * 
+ * 
+ * TODO 
  * Naming
  * Multiple Options for answer
  * If lastRow is removed this also happens for the current Quiz
  * Tutorial 
+ * 
+ * NOTES
+ * Aktuell muss die erste Spalte das klassische Quiz sein
  * 
  */
 
