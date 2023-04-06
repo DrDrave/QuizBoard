@@ -20,6 +20,7 @@ export enum QuestionType{
     textFlow = 'textFlow',
     //images will mostlikly also be saved as base64 strings
     image = 'image',
+    audio = 'audio',
 }
 
 

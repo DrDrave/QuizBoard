@@ -2,6 +2,7 @@ import { Button, LinearProgress, Stack } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { IQuestion, ITeam, QuestionType } from "../dataTypes/quizData";
 import './QuizActiveCard.css'
+import QuizCardAudioContent from "./QuizCardAudioContent";
 import QuizCardImageContent from "./QuizCardImageContent";
 import QuizCardTextContent from "./QuizCardTextContent";
 import QuizCardTextFlowContent from "./QuizCardTextFlowContent";
@@ -74,6 +75,8 @@ function QuizActiveCard (props: QuizActiveCardProps) {
             return <QuizCardTextFlowContent question={props.question} showAnswer={showAnswer}/>
         }else if(question.questionType === QuestionType.image){
             return <QuizCardImageContent question={props.question} showAnswer={showAnswer}/>
+        }else if(question.questionType === QuestionType.audio){
+            return <QuizCardAudioContent question={props.question} showAnswer={showAnswer}/>
         }
         return null
     }

@@ -41,6 +41,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
         }
     };
 
+    //This function is called on the import button
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if(e !== null && e.target !== null && e.target.files !== null){
             const fileReader = new FileReader();
@@ -49,6 +50,7 @@ function QuizCreateNew (props: QuizCreateNewProps) {
                 if(e.target && e.target.result){
                     const fileString: string = e.target.result as string
                     const fileData: IQuizColumn[] = JSON.parse(fileString)
+                    console.log(fileData)
                     setNewQuiz(fileData)
                 }                
             };

@@ -14,15 +14,17 @@ interface QuizCardNewProps{
 
 function QuizCardNew (props: QuizCardNewProps) {
 
-    const [questionType, setQuestionType] = React.useState<QuestionType>(QuestionType.text)
+    const [questionType, setQuestionType] = React.useState<QuestionType>(props.question.questionType?? QuestionType.text)
 
     const handleSelectChange = (event: SelectChangeEvent) =>{
         setQuestionType(event.target.value as QuestionType)
         props.changeQuestion('',false,event.target.value as QuestionType)
     }
 
-    const [image, setImage] = useState<String | ArrayBuffer | null>(null);
-    const [hints, setHints] = useState<string[]>(['']);
+    const [image, setImage] = useState<String | ArrayBuffer | null>(props.question.questionImage?? null);
+    const [hints, setHints] = useState<string[]>(props.question.questionTextFlow?? ['']);
+
+    console.log(props.question)
 
     useEffect(() => {
         props.changeQuestion('',false ,null,hints, undefined, undefined)
@@ -80,8 +82,34 @@ function QuizCardNew (props: QuizCardNewProps) {
         else if(questionType === QuestionType.image){
             return  <input type="file" accept="image/*" onChange={handleImageChange} />
         }
+        else if(questionType === QuestionType.audio){
+            return  <>
+                        <div>
+                            <input type="file" accept="audio/*" onChange={handleFileUpload} />
+                        </div>
+                        <div>
+                            <audio src={audioSrc} controls />
+                        </div>
+                    </>
+        }
         return null
     }
+
+    const [audioSrc, setAudioSrc] = useState(props.question.questionType === QuestionType.audio && props.question.questionText !== null ? props.question.questionText : '');
+
+    const handleFileUpload = (event: any) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (event) {
+            if(event && event.target && event.target.result){
+                const audioSrc = event.target.result;
+                setAudioSrc(audioSrc as string)
+                props.changeQuestion('',false ,null,undefined, undefined, audioSrc as string)
+            }
+            // set the audio source as a state variable
+        };
+      }
 
     return(
         <Paper elevation={8} className={'QuizCardNew'}>
@@ -92,6 +120,7 @@ function QuizCardNew (props: QuizCardNewProps) {
                     <MenuItem value={QuestionType.text}>Text</MenuItem>
                     <MenuItem value={QuestionType.textFlow}>TextFlow</MenuItem>
                     <MenuItem value={QuestionType.image}>Image</MenuItem>
+                    <MenuItem value={QuestionType.audio}>Audio</MenuItem>
                 </Select>
                 {renderQuestionEdit()}
                 <TextField 
