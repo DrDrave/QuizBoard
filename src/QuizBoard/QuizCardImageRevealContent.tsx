@@ -15,8 +15,8 @@ function QuizCardImageRevealContent (props: QuizCardImageRevealContentProps) {
 
     //creates rectCover at the start
     useEffect(() => {
-        const numberOfRectVertical = 20
-        const numberOfRectHoriziontal = 20
+        const numberOfRectVertical = 12
+        const numberOfRectHoriziontal = 12
         
         let rectID = 0;
 

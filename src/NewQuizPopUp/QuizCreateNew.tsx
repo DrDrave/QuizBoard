@@ -21,13 +21,26 @@ function QuizCreateNew (props: QuizCreateNewProps) {
     const [newQuiz,setNewQuiz] = useState<IQuizColumn[]>([{columName: '',questions: [{id: 0,questionType: QuestionType.text , questionText: null, questionImage: null, questionTextFlow: null ,answer: '',finished: false,points: 100}]}]);
 
     const exportData = () => {
-        const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-          JSON.stringify(newQuiz)
-        )}`;
+        
+        // const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+        //    JSON.stringify(newQuiz)
+        // )}`;
+        // const link = document.createElement("a");
+        // link.href = jsonString;
+        // link.download = "data.json"
+
+        // console.log(link)
+
+        // link.click();
+
+        const json = JSON.stringify(newQuiz);
+        const blob = new Blob([json], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.href = jsonString;
-        link.download = "data.json"
+        link.href = url;
+        link.download = "data.json";
         link.click();
+        URL.revokeObjectURL(url);
     };
 
     /**
