@@ -17,7 +17,7 @@ function QuizColumn (props: QuizColumnProps) {
             justifyContent="space-around">
 
             <Paper style={{flexGrow: 1}} elevation={8} className={'QuizCardHeader'}>
-                <Stack style={{height: '100%', justifyContent: 'center'}}>
+                <Stack style={{height: '100%', justifyContent: 'center', background: 'lightgray'}}>
                     <h1 className={'QuizCardTopic'}>
                         {props.quizColumn.columName}
                     </h1>                                            

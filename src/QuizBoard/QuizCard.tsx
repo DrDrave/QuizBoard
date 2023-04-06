@@ -15,7 +15,7 @@ function QuizCard (props: QuizCardProps) {
     }
 
     return(
-        <Paper className={"QuizCard"} elevation={props.question.finished? 0 : 8} onClick={(e) => {handleClickCard(props.question.id)}}>
+        <Paper className={"QuizCard"} elevation={props.question.finished? 0 : 8} onClick={(e) => {handleClickCard(props.question.id)}} style={{background: 'lightgray'}}>
             <Stack style={{height: '100%', justifyContent: 'center'}}>
                     <h1 className={'QuizCardPoints'}>
                         {props.question.points}
