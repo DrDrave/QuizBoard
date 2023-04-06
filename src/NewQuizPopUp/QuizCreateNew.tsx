@@ -50,7 +50,6 @@ function QuizCreateNew (props: QuizCreateNewProps) {
                 if(e.target && e.target.result){
                     const fileString: string = e.target.result as string
                     const fileData: IQuizColumn[] = JSON.parse(fileString)
-                    console.log(fileData)
                     setNewQuiz(fileData)
                 }                
             };

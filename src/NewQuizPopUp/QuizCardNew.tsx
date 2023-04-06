@@ -24,8 +24,6 @@ function QuizCardNew (props: QuizCardNewProps) {
     const [image, setImage] = useState<String | ArrayBuffer | null>(props.question.questionImage?? null);
     const [hints, setHints] = useState<string[]>(props.question.questionTextFlow?? ['']);
 
-    console.log(props.question)
-
     useEffect(() => {
         props.changeQuestion('',false ,null,hints, undefined, undefined)
     },[hints])
@@ -79,7 +77,7 @@ function QuizCardNew (props: QuizCardNewProps) {
                         <Button variant="contained" onClick={() => setHints(oldHints => [...oldHints,''])}>Add Hint</Button>
                     </>
         }
-        else if(questionType === QuestionType.image){
+        else if(questionType === QuestionType.image || questionType === QuestionType.imageReveal){
             return  <input type="file" accept="image/*" onChange={handleImageChange} />
         }
         else if(questionType === QuestionType.audio){
@@ -121,6 +119,7 @@ function QuizCardNew (props: QuizCardNewProps) {
                     <MenuItem value={QuestionType.textFlow}>TextFlow</MenuItem>
                     <MenuItem value={QuestionType.image}>Image</MenuItem>
                     <MenuItem value={QuestionType.audio}>Audio</MenuItem>
+                    <MenuItem value={QuestionType.imageReveal}>ImageReveal</MenuItem>
                 </Select>
                 {renderQuestionEdit()}
                 <TextField 

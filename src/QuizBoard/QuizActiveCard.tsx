@@ -4,6 +4,7 @@ import { IQuestion, ITeam, QuestionType } from "../dataTypes/quizData";
 import './QuizActiveCard.css'
 import QuizCardAudioContent from "./QuizCardAudioContent";
 import QuizCardImageContent from "./QuizCardImageContent";
+import QuizCardImageRevealContent from "./QuizCardImageRevealContent";
 import QuizCardTextContent from "./QuizCardTextContent";
 import QuizCardTextFlowContent from "./QuizCardTextFlowContent";
 
@@ -77,6 +78,8 @@ function QuizActiveCard (props: QuizActiveCardProps) {
             return <QuizCardImageContent question={props.question} showAnswer={showAnswer}/>
         }else if(question.questionType === QuestionType.audio){
             return <QuizCardAudioContent question={props.question} showAnswer={showAnswer}/>
+        }else if(question.questionType === QuestionType.imageReveal){
+            return <QuizCardImageRevealContent question={props.question} showAnswer={showAnswer}/>
         }
         return null
     }

@@ -11,5 +11,7 @@
 }
 
 .QuizActiveCardContentWrapper{
-    flex-grow: 1
+    flex-grow: 1;
+    height: 80%;
+    width: 90%;
 }

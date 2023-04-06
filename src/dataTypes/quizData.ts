@@ -9,7 +9,7 @@ export interface IQuestion{
     questionType: QuestionType;
     questionText: string | null, 
     questionImage: string | null,
-    questionTextFlow: string[] | null;
+    questionTextFlow: string[] | null,
     answer: string;
     finished: boolean;
     points: number;
@@ -20,6 +20,7 @@ export enum QuestionType{
     textFlow = 'textFlow',
     //images will mostlikly also be saved as base64 strings
     image = 'image',
+    imageReveal = 'imageReveal',
     audio = 'audio',
 }
 
