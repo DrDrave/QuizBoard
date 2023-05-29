@@ -10,15 +10,16 @@
 }
 
 .QuizCardItem{
-    background-color: gray;
+    background: transparent !important;
     width: 100%;
 }
 
 .QuizCardHeader{
     width: 100%;
+    background: var(--cardColor) !important;
 }
 
 .QuizCardTopic{
-    color: var(--primary);
+    color: var(--text);
     margin: 0;
 }

@@ -15,12 +15,12 @@ function QuizCard (props: QuizCardProps) {
     }
 
     return(
-        <Paper className={"QuizCard"} elevation={props.question.finished? 0 : 8} onClick={(e) => {handleClickCard(props.question.id)}} style={{background: 'lightgray'}}>
-            <Stack style={{height: '100%', justifyContent: 'center'}}>
+        <Paper className={'QuizCard'} style={{ backgroundColor: props.question.finished? 'red !important' : ''}} elevation={props.question.finished? 0 : 8} onClick={(e) => {handleClickCard(props.question.id)}} >
+            <Stack style={{height: '100%', justifyContent: 'center', visibility: props.question.finished? 'hidden' : 'visible'}}>
                     <h1 className={'QuizCardPoints'}>
                         {props.question.points}
                     </h1>   
-            </Stack>       
+            </Stack>
         </Paper>
     )
 }

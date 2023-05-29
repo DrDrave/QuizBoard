@@ -1,9 +1,10 @@
 .QuizCard{
     height: 100%;
-    background-color: gray;
+    position: relative;
+    background-color: var(--cardColor) !important;
 }
 
 .QuizCardPoints{
     margin: 0;
-    color: var(--primary)
+    color: var(--text)
 }
