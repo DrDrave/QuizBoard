@@ -87,7 +87,7 @@ function QuizContainer () {
         <Stack className={"QuizContainer"}> 
             <div style={{height: '60px'}}> 
                 <Stack flexDirection="row" justifyContent={'center'}>
-                    <h1 style={{margin: '8px'}}>
+                    <h1 style={{margin: '8px'}} className={"GameTitle"}>
                         Quizboard with Friends V2
                     </h1>
                     <IconButton aria-label="add" onClick={() => {setCreateNewQuiz(true)}}>

@@ -1,7 +1,9 @@
 .QuizCard{
     height: 100%;
     position: relative;
-    background-color: var(--cardColor) !important;
+    /* background-image: linear-gradient(0deg,var(--background),var(--secondary)); */
+    background-color: var(--secondaryLight) !important;
+    /* background-color: var(--quizCard) !important; */
 }
 
 .QuizCardPoints{

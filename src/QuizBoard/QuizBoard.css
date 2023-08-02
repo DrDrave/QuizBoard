@@ -1,5 +1,4 @@
 .QuizBoard{
-    background-color: var(--backgroundDarker);
     border-radius: 5px;
     align-self: center;
     flex-grow: 1;

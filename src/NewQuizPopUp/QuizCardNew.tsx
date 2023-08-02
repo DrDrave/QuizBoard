@@ -68,12 +68,14 @@ function QuizCardNew (props: QuizCardNewProps) {
                                             return ['']
                                         }})
                                 }>Remove Hint</Button>
+                                <Stack style={{overflowY: "auto"}}>
                         {hints.map((hint,index) => (
                             <TextField 
                             // onChange={(e) => {props.changeQuestion('',false ,null, [e.target.value], undefined, undefined)}}
                             onChange={(e) => {handleHintChange(e.target.value,index)}}
                             value={hint[index]} label="Question" 
                             variant="outlined" size={'small'}/>))}
+                            </Stack>
                         <Button variant="contained" onClick={() => setHints(oldHints => [...oldHints,''])}>Add Hint</Button>
                     </>
         }
